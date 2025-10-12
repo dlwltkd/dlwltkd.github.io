@@ -9,34 +9,49 @@ redirect_from:
 
 
 
-# 💡 **AI Enthusiast | Developer | Research Learner | Creator**
+
+
+**🎓2nd-Year Student @ Yonsei University (Class Number 24.5)**  
+**💡AI Enthusiast | Developer | Research Learner | Creator**
 
 ---
 
 ## 🧠 About Me
 
-I'm a student at **Yonsei University**, exploring how **artificial intelligence and human creativity** intersect.  
-My work and studies focus on **programming, intelligent systems, and problem-solving through code** — always driven by curiosity and a bit of imagination ✨.
+I'm an undergraduate student passionate about the intersection of **artificial intelligence, programming, and human creativity**.  
+I study **Artificial Intelligence at Yonsei University**, where I explore how technology can reason, learn, and express — just like people do 🤖💭.
 
-I enjoy turning abstract ideas into something real, whether that’s a working prototype, an interactive game, or a data-driven insight.  
-To me, programming is more than syntax — it’s a creative tool for understanding how people and machines can think together 🤖💭.
+I love transforming complex ideas into elegant code — whether it’s an AI-driven system, an interactive simulation, or a playful experiment in logic.  
+For me, programming is both **a language of precision and imagination**, bridging the gap between *how we think* and *how machines learn*.
+
+---
+
+## 🌍 Multilingual & Global
+
+🗣️ I’m fluent in **Korean**, **English**, and **French** — three languages that help me connect across cultures and think in different patterns.  
+I believe that language, like code, shapes the way we perceive and express intelligence.
 
 ---
 
 ## 🚀 Current Focus
 
-- 🤖 **AI & Machine Learning** — experimenting with models that simulate reasoning and memory  
-- 🧩 **Game Development** — building interactive systems using **Python** and **C++ (SFML)**  
-- 💬 **Conversational Systems** — designing NPC dialogue and generative storytelling  
-- 📊 **Research Exploration** — studying algorithms, logic, and human-computer interaction  
+- 🧬 **AI & Machine Learning** — exploring reasoning and pattern recognition using neural networks  
+- 🎮 **Game Development & Simulation** — creating interactive systems with **C++** and **SFML**  
+- 💬 **Conversational Systems** — experimenting with generative dialogue and creative AI  
+- 🧩 **Human–Computer Interaction** — studying how interfaces shape thought and behavior  
 
 ---
 
-## 💻 Skills & Tools
+## 💻 Technical Stack
 
-**Languages:** Python 🐍, C++ ⚙️  
-**Frameworks & Libraries:** SFML, OpenAI API, Tkinter, NumPy  
-**Other Interests:** Data visualization, creative coding, automation  
+**Languages:** Python 🐍, C++ ⚙️, JavaScript 🌐, SQL 💾  
+**Frameworks & Libraries:** PyTorch 🔥, TensorFlow 🧠, SFML, Tkinter  
+**Platforms & Tools:** Linux 🐧, RaspberryPi, Git/GitHub, OpenAI API, VSCode  
+**Core Skills:**  
+- Data analysis & visualization  
+- Neural network training  
+- Backend scripting & automation  
+- Creative problem solving  
 
 ---
 
@@ -49,7 +64,7 @@ Every project I take on is a small step toward building systems that **learn, ad
 
 ---
 
-## 🧩 Outside of Code
+## 🧩 Beyond Code
 
 When I’m not programming, you’ll find me experimenting with  
 🎮 **indie game design concepts**,  
@@ -57,14 +72,3 @@ When I’m not programming, you’ll find me experimenting with
 🎧 **mixing electronic music** for fun.  
 
 I like to think of creativity as a form of computation — just with a human twist 😎.
-
----
-
-## 📬 Let’s Connect!
-
-🌐 [GitHub](#) | 💼 [LinkedIn](#) | ✉️ [Email](#)
-
----
-
-> “Between logic and imagination — that’s where I build.”
-
