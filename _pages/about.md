@@ -1,15 +1,15 @@
 ---
 permalink: /
-title: "Birken Silitch Website"
+title: "👋 Hi, I'm **Birken Michael Silitch (이지상)**"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-# 👋 Hi, I'm **Birken Michael Silitch (이지상)**
 
-💡 **AI Enthusiast | Developer | Research Learner | Creator**
+
+# 💡 **AI Enthusiast | Developer | Research Learner | Creator**
 
 ---
 
