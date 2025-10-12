@@ -11,8 +11,10 @@ redirect_from:
 
 
 
-**🎓2nd-Year Student @ Yonsei University (Class Number 24.5)**  
-**💡AI Enthusiast | Developer | Research Learner | Creator**
+
+
+🎓2nd-Year Student @ Yonsei University (Class Number 24.5)
+💡AI Enthusiast | Developer | Research Learner | Creator
 
 ---
 
