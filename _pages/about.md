@@ -7,8 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-  
+<br>
 **🎓2nd-Year Student @ Yonsei University (Class Number 24.5)**
+<br>
 **💡AI Enthusiast | Developer | Research Learner | Creator**
 
 ---
