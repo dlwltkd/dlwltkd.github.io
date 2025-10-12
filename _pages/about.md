@@ -1,3 +1,12 @@
+---
+permalink: /
+title: "Birken Silitch Website"
+author_profile: true
+redirect_from: 
+  - /about/
+  - /about.html
+---
+
 # 👋 Hi, I'm **Birken Michael Silitch (이지상)**
 
 💡 **AI Enthusiast | Developer | Research Learner | Creator**
@@ -58,3 +67,4 @@ I like to think of creativity as a form of computation — just with a human twi
 ---
 
 > “Between logic and imagination — that’s where I build.”
+
