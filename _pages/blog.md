@@ -2,6 +2,7 @@
 permalink: /blog/
 title: "**Blog**"
 author_profile: true
+mathjax: true
 redirect_from: 
 ---
 ---
