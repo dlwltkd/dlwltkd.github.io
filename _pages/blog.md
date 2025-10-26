@@ -174,7 +174,7 @@ When an image model writes with visual tokens or a speech model speaks through a
 **Nearest code and quantized latent**
 
 $$
-k = \\arg\\min\_j \\lVert z\_e(x) \- e\_j \\rVert\_2^2,
+k = \arg\min_j \lVert z_e(x) - e_j \rVert_2^2,
 \\qquad
 z\_q(x) \= e\_k
 $$
