@@ -53,9 +53,11 @@ k=\arg\min_j \|z_e(x)-e_j\|^2,\quad z_q(x)=e_k
 
 **Training objective**
 \\[
-L = \underbrace{\|x-\hat{x}\|^2}_{\text{reconstruction}}
-+ \underbrace{\|\mathrm{sg}[z_e(x)]-e\|_2^2}_{\text{codebook update}}
-+ \beta\,\underbrace{\|z_e(x)-\mathrm{sg}[e]\|_2^2}_{\text{commitment}}
+\begin{aligned}
+L &= \underbrace{\|x-\hat{x}\|^2}_{\text{reconstruction}} \\
+  &\quad + \underbrace{\|\mathrm{sg}[z_e(x)]-e\|_2^2}_{\text{codebook update}} \\
+  &\quad + \beta\,\underbrace{\|z_e(x)-\mathrm{sg}[e]\|_2^2}_{\text{commitment}}
+\end{aligned}
 \\]
 `sg[·]` is *stop-gradient*.
 
