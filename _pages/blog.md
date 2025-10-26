@@ -175,23 +175,23 @@ When an image model writes with visual tokens or a speech model speaks through a
 
 $$
 k = \arg\min_j \lVert z_e(x) - e_j \rVert_2^2,
-\\qquad
-z\_q(x) \= e\_k
+\qquad
+z_q(x) = e_k
 $$
 
 **Three\-term training loss**
 
 $$
-L \= \\lVert x \- \\hat{x} \\rVert\_2^2 
-\+ \\lVert \\mathrm{sg}\\bigl\[z\_e(x)\\bigr] \- e \\rVert\_2^2 
-\+ \\beta\\,\\lVert z\_e(x) \- \\mathrm{sg}\\bigl\[e\\bigr] \\rVert\_2^2
+L = \lVert x - \hat{x} \rVert_2^2 
++ \lVert \mathrm{sg}\bigl[z_e(x)\bigr] - e \rVert_2^2 
++ \beta\,\lVert z_e(x) - \mathrm{sg}\bigl[e\bigr] \rVert_2^2
 $$
 
 **VAE objective for reference**
 
 $$
-L\_{\\mathrm{VAE}} \= \\mathbb{E}\_{q(z\\mid x)}\\bigl\[ \-\\log p(x\\mid z) \\bigr]
-\+ \\mathrm{KL}\\bigl(q(z\\mid x) \\Vert p(z)\\bigr)
+L_{\mathrm{VAE}} = \mathbb{E}_{q(z\mid x)}\bigl[ -\log p(x\mid z) \bigr]
++ \mathrm{KL}\bigl(q(z\mid x) \Vert p(z)\bigr)
 $$
 
 ---
