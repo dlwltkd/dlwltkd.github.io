@@ -58,7 +58,7 @@ $$
 **Pipeline diagram**
 
 
-The decoder receives \(\\(z\_q(x)\\)\), not \(\\(z\_e(x)\\)\). This forces the model to communicate through a finite set of symbols that it learns to be useful. In turn, this removes the threat of posterior collapse, as the model must rely on the now quantizes latent. 
+The decoder receives \(\\(z\_q(x)\\)\), not \(\\(z\_e(x)\\)\). This forces the model to communicate through a finite set of symbols that it learns to be useful. In turn, this removes the threat of posterior collapse, as the model must rely on the now quantisized data. 
 
 **Training objective**  
 VQ\-VAE uses a three\-term loss
