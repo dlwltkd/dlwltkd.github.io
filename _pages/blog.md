@@ -6,6 +6,7 @@ author_profile: true
 mathjax: true
 redirect_from: 
 ---
+A big-picture, math-backed, visually guided walkthrough of Neural Discrete Representation
 
 
 > Inspired by **“Neural Discrete Representation Learning”** by Aäron van den Oord, Oriol Vinyals, and Koray Kavukcuoglu (NeurIPS 2017).
