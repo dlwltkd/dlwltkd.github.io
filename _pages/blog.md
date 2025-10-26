@@ -1,6 +1,7 @@
 ---
 permalink: /blog/
-title: "**Blog**"
+title: "**VQ-VAE: When Neural Networks Learned to Speak in Symbols**"
+substitle: "A big-picture, math-backed, visually guided walkthrough of Neural Discrete Representation Learning (2017)"
 author_profile: true
 mathjax: true
 redirect_from: 
