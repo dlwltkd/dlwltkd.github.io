@@ -40,7 +40,7 @@ This shift matters for two reasons. First, discrete tokens force models to use a
 **Autoencoder (AE).** Compress input \(\\(x\\)\) to a latent \(\\(z\\)\) and reconstruct \(\\(\\hat{x}\\)\). The squared error objective is
 
 $$
-L_{\\mathrm{AE}} \= \\lVert x \- \\hat{x} \\rVert\_2^2
+L_{\mathrm{AE}} = \lVert x - \hat{x} \rVert_2^2
 $$
 
 AEs learn useful features but the latent is continuous and unconstrained.
@@ -48,7 +48,7 @@ AEs learn useful features but the latent is continuous and unconstrained.
 **Variational Autoencoder (VAE).** VAEs add a probabilistic latent and optimize
 
 $$
-L\_{\\mathrm{VAE}} \= \\mathbb{E}\_{q(z\\mid x)}\\bigl\[\-\\log p(x\\mid z)\\bigr] \+ \\mathrm{KL}\\bigl(q(z\\mid x) \\Vert p(z)\\bigr)
+L_{\mathrm{VAE}} = \mathbb{E}_{q(z\mid x)}\bigl[-\log p(x\mid z)\bigr] + \mathrm{KL}\bigl(q(z\mid x) \Vert p(z)\bigr)
 $$
 
 This encourages good reconstructions and a well\-behaved latent distribution. Yet with a very strong decoder, the model may **ignore** the latent. This is the well known **posterior collapse** problem. We want a bottleneck that is simple, stable, and hard to bypass.
@@ -62,9 +62,9 @@ VQ\-VAE keeps the AE structure but replaces continuous latents with **indices** 
 **Nearest code lookup**
 
 $$
-k \= \\arg\\min\_j \\lVert z\_e(x) \- e\_j \\rVert\_2^2, 
-\\qquad
-z\_q(x) \= e\_k
+k = \arg\min\_j \lVert z_e(x) - e_j \rVert_2^2, 
+\qquad
+z_q(x) = e_k
 $$
 
 **Pipeline diagram**
@@ -76,12 +76,12 @@ The decoder receives \(\\(z\_q(x)\\)\), not \(\\(z\_e(x)\\)\). This forces the m
 VQ\-VAE uses a three\-term loss
 
 $$
-L \= 
-\\underbrace{\\lVert x \- \\hat{x} \\rVert\_2^2}\_{\\text{reconstruction}}
-\+ 
-\\underbrace{\\lVert \\mathrm{sg}\\bigl\[z\_e(x)\\bigr] \- e \\rVert\_2^2}\_{\\text{codebook update}}
-\+ 
-\\beta\\,\\underbrace{\\lVert z\_e(x) \- \\mathrm{sg}\\bigl\[e\\bigr] \\rVert\_2^2}\_{\\text{commitment}}
+L = 
+\underbrace{\lVert x - \hat{x} \rVert_2^2}_{\text{reconstruction}}
++ 
+\underbrace{\lVert \mathrm{sg}\bigl[z_e(x)\bigr] - e \rVert_2^2}_{\text{codebook update}}
++ 
+\beta\,\underbrace{\lVert z_e(x) - \mathrm{sg}\bigl[e\bigr] \rVert_2^2}_{\text{commitment}}
 $$
 
 where \(\\(\\mathrm{sg}\[\\cdot]\\)\) is the **stop\-gradient** operator. The second term moves code vectors toward encoder outputs. The third term keeps the encoder close to the chosen code instead of drifting.
