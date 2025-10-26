@@ -30,9 +30,6 @@ Before 2017, unsupervised generative models were great at drawing or speaking, y
 
 This shift matters for two reasons. First, discrete tokens force models to use a **meaningful bottleneck**. Second, tokens connect naturally to language, compression, and long-range structure. That combination quietly seeded the design of many later systems that treat images and audio as **tokens** to be generated with powerful sequence models.
 
-> Prefer a quick video overview first  
-> <iframe width="560" height="315" src="https://www.youtube.com/embed/VZFVUrYcig0" title="VQ-VAE Explained" frameborder="0" allowfullscreen></iframe>
-
 ---
 
 ## 2. A short background: from AEs and VAEs to discrete latents
@@ -62,7 +59,7 @@ VQ\-VAE keeps the AE structure but replaces continuous latents with **indices** 
 **Nearest code lookup**
 
 $$
-k = \arg\min\_j \lVert z_e(x) - e_j \rVert_2^2, 
+k = \arg\min_j \lVert z_e(x) - e_j \rVert_2^2, 
 \qquad
 z_q(x) = e_k
 $$
@@ -204,13 +201,3 @@ $$
 - Défossez et al. High Fidelity Neural Audio Compression (EnCodec). 2022\.  
 - Yannic Kilcher. VQ\-VAE Explained. YouTube.
 
----
-
-### Author notes for Jekyll and MathJax
-
-- Inline math uses standard delimiters \\( ... \\).  
-- Display math uses $$ on their own lines, with a blank line after each block.  
-- Backslashes are escaped once in the Markdown source so the generated HTML still contains the raw delimiters.  
-- Avoid trailing backslashes at the end of lines inside aligned environments.  
-- Keep the MathJax config centralized in `_includes/footer/custom.html` and set `mathjax: true` in front matter on pages that need it.  
-- Prefer MathJax macros such as \\(\\cdot\\) and \\(\\mathrm\\{\\}\\) instead of Unicode glyphs in formulas.  
