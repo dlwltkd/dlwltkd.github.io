@@ -135,6 +135,9 @@ VQ\-VAE is the first discrete latent model to approach continuous VAE performanc
 **Neural audio codecs and music generation.**  
 **SoundStream** and **EnCodec** learn quantized audio tokens that support high\-quality, low bitrate streaming. **Jukebox** composes music by modeling long sequences of discrete audio codes.
 
+![Reconstruction placeholder](/images/soundsss.png)
+*A diagram of models used in most sound generation models, using the findings from the paper. from(https://kimjy99.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/soundstream/)*
+
 **Multimodal tokenization.**  
 Modern vision, audio, and speech models often use learned tokenizers. Turning continuous signals into discrete symbols makes it natural to apply language model tooling such as transformers and sequence priors.
 
