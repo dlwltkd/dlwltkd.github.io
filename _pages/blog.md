@@ -6,41 +6,32 @@ mathjax: true
 redirect_from: 
 ---
 
----
-layout: post
-title: "VQ-VAE: When Neural Networks Learned to Speak in Symbols"
-subtitle: "A big-picture, math-backed, visually guided walkthrough of Neural Discrete Representation Learning (2017)"
-date: 2025-10-26
-tags: [deep learning, vq-vae, generative models, representation learning]
-mathjax: true
----
 
 > Inspired by **“Neural Discrete Representation Learning”** by Aäron van den Oord, Oriol Vinyals, and Koray Kavukcuoglu (NeurIPS 2017).
-
-![Codebook sketch placeholder](/assets/vq-vae/codebook-grid.png)
-*Figure: Encoder outputs live in a continuous space but get snapped to the nearest code in a learned dictionary. Each code acts like a vocabulary item.*
 
 ---
 
 ## 1. The big picture
 
-Before 2017, unsupervised generative models were great at drawing or speaking, yet weak at **structuring** what they learned. Most representations were continuous vectors without a notion of **tokens** or **vocabulary**. There was little separation between the rough signal and the meaningful concept.  
+Before 2017, unsupervised generative models were great at things like drawing or speaking, yet weak at **structuring** what they learned. Most representations were continuous vectors without a notion of **tokens** or **vocabulary**. In simpler terms, they were unorganized. There was little separation between the rough signal and the meaningful concept.  
 
-**VQ-VAE** offered a surprisingly simple idea that changed things. It taught networks to **describe data with a learned discrete codebook**, a compact set of embeddings that behave like symbols. These symbols are not labeled by humans. They emerge from data. The model chooses them because they help reconstruct and predict the world efficiently.
+**VQ-VAE** offered a surprisingly simple idea that changed things. It taught these previously unstructured neural networks to describe data with a learned **discrete codebook**, a compact set of embeddings that behave like symbols. These symbols can not be labeled by humans. They emerge from data only and the process itself. The model chooses them because they help reconstruct and predict the world efficiently.
 
-This shift matters for two reasons. First, discrete tokens force models to use a **meaningful bottleneck**. Second, tokens connect naturally to language, compression, and long-range structure. That combination quietly seeded the design of many later systems that treat images and audio as **tokens** to be generated with powerful sequence models.
+This shift matters for two reasons. First, discrete tokens force models to use a **meaningful bottleneck**. Second, tokens connect naturally to language, compression, and long-range structure, in the same way that we do. That combination quietly seeded the design of many later systems that treat images and audio as **tokens** to be generated with powerful sequence models.
 
 ---
 
 ## 2. A short background: from AEs and VAEs to discrete latents
 
-**Autoencoder (AE).** Compress input \(\\(x\\)\) to a latent \(\\(z\\)\) and reconstruct \(\\(\\hat{x}\\)\). The squared error objective is
+To understand what VQ-VAE is, we must first dive into the previous concept of Autoencoders and Variational Autoencoders.
+
+**Autoencoder (AE).** Compresses input \(\\(x\\)\) to a latent \(\\(z\\)\) and reconstruct \(\\(\\hat{x}\\)\). The squared error objective is
 
 $$
 L_{\mathrm{AE}} = \lVert x - \hat{x} \rVert_2^2
 $$
 
-AEs learn useful features but the latent is continuous and unconstrained.
+AEs learn useful features but the latent is continuous and unconstrained. 
 
 **Variational Autoencoder (VAE).** VAEs add a probabilistic latent and optimize
 
@@ -48,7 +39,7 @@ $$
 L_{\mathrm{VAE}} = \mathbb{E}_{q(z\mid x)}\bigl[-\log p(x\mid z)\bigr] + \mathrm{KL}\bigl(q(z\mid x) \Vert p(z)\bigr)
 $$
 
-This encourages good reconstructions and a well\-behaved latent distribution. Yet with a very strong decoder, the model may **ignore** the latent. This is the well known **posterior collapse** problem. We want a bottleneck that is simple, stable, and hard to bypass.
+This encourages good reconstructions and a well\-behaved latent distribution. Yet,  as the model has a very **strong** decoder, the model may **ignore** the latent. This is the well known **posterior collapse** problem. We want a bottleneck that is simple, stable, and hard to bypass. And the answer seemed to be quantiziation of this latent, forcing it to react.
 
 ---
 
@@ -67,7 +58,7 @@ $$
 **Pipeline diagram**
 
 
-The decoder receives \(\\(z\_q(x)\\)\), not \(\\(z\_e(x)\\)\). This forces the model to communicate through a finite set of symbols that it learns to be useful.
+The decoder receives \(\\(z\_q(x)\\)\), not \(\\(z\_e(x)\\)\). This forces the model to communicate through a finite set of symbols that it learns to be useful. In turn, this removes the threat of posterior collapse, as the model must rely on the now quantizes latent. 
 
 **Training objective**  
 VQ\-VAE uses a three\-term loss
@@ -96,10 +87,11 @@ The decoder only sees discrete codes. It cannot side\-step them. If it wants to 
 - Latent grid around 32×32×1 with \(\\(K\=512\\)\) codes  
 - Effective compression about 40× relative to raw pixels
 
-Reconstructions preserve global structure and object identity. To **generate** images, the authors train a **PixelCNN prior** over the discrete code grid. Sampling codes from that prior and decoding yields coherent novel images.
+Reconstructions preserve global structure and object identity. To generate images, the authors train a **PixelCNN prior** over the discrete code grid. Sampling codes from that prior and decoding yields coherent novel images.
 
-![Reconstruction placeholder](/assets/vq-vae/reconstruction-triptych.png)
-*Original at left, reconstruction in the middle, and a new sample decoded from a PixelCNN prior at right.*
+![Reconstruction placeholder](/images/reconstruction.png.png)
+*Left: ImageNet 128x128x3 images, right: reconstructions from a VQ-VAE with a 32x32x1
+latent space, with K=512*
 
 ### Speech: phoneme\-like tokens without labels
 
@@ -107,7 +99,7 @@ Reconstructions preserve global structure and object identity. To **generate** i
 - Encoder compresses waveform by roughly 64×  
 - Decoder can be conditioned on a speaker identity
 
-The quantized tokens capture **content** rather than **voice**. Swap the speaker identity while keeping the tokens and you get **speaker conversion**. Without any phoneme supervision, the tokens align with phoneme classes significantly better than chance.
+The quantized tokens capture **content** rather than **voice**. Swap the speaker identity while keeping the tokens and you get speaker conversion. Without any phoneme supervision, the tokens align with phoneme classes significantly better than chance.
 
 > Hear examples here  
 > <https://avdnoord.github.io/homepage/vqvae/>
