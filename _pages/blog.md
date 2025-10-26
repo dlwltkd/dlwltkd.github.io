@@ -52,14 +52,16 @@ k=\arg\min_j \|z_e(x)-e_j\|^2,\quad z_q(x)=e_k
 
 
 **Training objective**
-\\[
+
+$$
 \begin{aligned}
-L &= \underbrace{\|x-\hat{x}\|^2}_{\text{reconstruction}} \\[0.25em]
-  &\quad + \underbrace{\|\mathrm{sg}[z_e(x)]-e\|_2^2}_{\text{codebook update}} \\[0.25em]
+L &= \underbrace{\|x-\hat{x}\|^2}_{\text{reconstruction}} \\
+  &\quad + \underbrace{\|\mathrm{sg}[z_e(x)]-e\|_2^2}_{\text{codebook update}} \\
   &\quad + \beta\,\underbrace{\|z_e(x)-\mathrm{sg}[e]\|_2^2}_{\text{commitment}}
 \end{aligned}
-\\]
-`sg[·]` is *stop-gradient*.
+$$
+
+`sg[\cdot]` is *stop-gradient*.
 
 **Why it works**
 - Discrete lookup forces the decoder to condition on tokens → no collapse.  
