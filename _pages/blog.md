@@ -26,37 +26,37 @@ Imagine if a neural net could invent its **own vocabulary** for perception. That
 ---
 
 ## 🧱 Background in 60 seconds
-**Autoencoder (AE):** compress \(x \to z\), reconstruct \(\hat{x}\).  
-Loss: \(L_{\text{AE}}=\|x-\hat{x}\|^2\).
+**Autoencoder (AE):** compress \\(x \to z\\), reconstruct \\(\hat{x}\\).  
+Loss: \\(L_{\text{AE}}=\|x-\hat{x}\|^2\\).
 
-**Variational Autoencoder (VAE):** learns a distribution \(q(z|x)\), samples \(z\), reconstructs:
-\[
+**Variational Autoencoder (VAE):** learns a distribution \\(q(z|x)\\), samples \\(z\\), reconstructs:
+\\[
 L_{\text{VAE}}=\mathbb{E}_{q(z|x)}[-\log p(x|z)] + \mathrm{KL}\big(q(z|x)\|p(z)\big).
-\]
+\\]
 
-**Problem — Posterior collapse:** powerful decoders (e.g., PixelCNN/LSTM) can ignore \(z\).  
+**Problem — Posterior collapse:** powerful decoders (e.g., PixelCNN/LSTM) can ignore \\(z\\).  
 We want a latent that the decoder **must** use, and ideally it should be **discrete** (closer to words/phonemes).
 
 ---
 
 ## 💡 The VQ-VAE idea
-Replace continuous \(z\) with **indices into a learned codebook** \(e=\{e_1,\dots,e_K\}\).
+Replace continuous \\(z\\) with **indices into a learned codebook** \\(e=\{e_1,\dots,e_K\}\\).
 
 **Pipeline**
-1) **Encoder:** \(x \mapsto z_e(x)\) (continuous)  
+1) **Encoder:** \\(x \mapsto z_e(x)\\) (continuous)  
 2) **Quantize:** choose nearest codeword  
-\[
+\\[
 k=\arg\min_j \|z_e(x)-e_j\|^2,\quad z_q(x)=e_k
-\]
-3) **Decoder:** reconstruct from \(z_q(x)\)
+\\]
+3) **Decoder:** reconstruct from \\(z_q(x)\\)
 
 
 **Training objective**
-\[
+\\[
 L = \underbrace{\|x-\hat{x}\|^2}_{\text{reconstruction}}
 + \underbrace{\|\mathrm{sg}[z_e(x)]-e\|_2^2}_{\text{codebook update}}
 + \beta\,\underbrace{\|z_e(x)-\mathrm{sg}[e]\|_2^2}_{\text{commitment}}
-\]
+\\]
 `sg[·]` is *stop-gradient*.
 
 **Why it works**
@@ -69,7 +69,7 @@ L = \underbrace{\|x-\hat{x}\|^2}_{\text{reconstruction}}
 ## 🧪 What the paper shows
 
 ### 🖼 Images (ImageNet 128×128)
-- Latent grid: \(32\times32\times1\), codebook size \(K=512\) → ~40× compression.
+- Latent grid: \\(32\times32\times1\\), codebook size \\(K=512\\) → ~40× compression.
 - Reconstructions are coherent; slight blur only.
 - Train a **PixelCNN prior** over the discrete codes and decode samples → realistic images (foxes, whales, reefs).
 
@@ -121,3 +121,4 @@ Whenever you see AI synthesizing images or music from tokens, you’re hearing e
 - van den Oord, Vinyals, Kavukcuoglu. *Neural Discrete Representation Learning.* NeurIPS 2017.  
 - Yannic Kilcher: *VQ-VAE Explained* (YouTube).  
 - Follow-ups: VQ-VAE-2 (2019), DALL·E (2021), Jukebox (2020), EnCodec (2022).
+
