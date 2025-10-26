@@ -89,7 +89,7 @@ The decoder only sees discrete codes. It cannot side\-step them. If it wants to 
 
 Reconstructions preserve global structure and object identity. To generate images, the authors train a **PixelCNN prior** over the discrete code grid. Sampling codes from that prior and decoding yields coherent novel images.
 
-![Reconstruction placeholder](/images/reconstruction.png.png)
+![Reconstruction placeholder](/images/reconstruction.png)
 *Left: ImageNet 128x128x3 images, right: reconstructions from a VQ-VAE with a 32x32x1
 latent space, with K=512*
 
