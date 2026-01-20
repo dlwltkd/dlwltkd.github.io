@@ -96,7 +96,7 @@ Reconstructions preserve global structure and object identity. To generate image
 latent space, with K=512*
 
 ### Speech: phoneme\-like tokens without labels
-
+ 
 - VCTK dataset with 109 speakers  
 - Encoder compresses waveform by roughly 64×  
 - Decoder can be conditioned on a speaker identity
