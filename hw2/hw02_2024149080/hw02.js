@@ -40,9 +40,9 @@ async function main() {
     //사각형 좌표 (한변의 길이 0.2, 중앙 위치)
     const vertices = new Float32Array([
         -0.1, 0.1, 0.0, //top-left
-        -0.1, -0.1, 0.0, //top-right
-        0.1, -0.1, 0.0, //bottom left
-        0.1, 0.1, 0.0, //bottom right
+        -0.1, -0.1, 0.0, //bottom-left
+        0.1, -0.1, 0.0, //bottom-right
+        0.1, 0.1, 0.0, //top-right
     ]);
 
     // VAO + VBO
