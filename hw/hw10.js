@@ -33,6 +33,8 @@ document.body.appendChild(stats.dom);
 
 const gui = new GUI();
 const loader = new THREE.TextureLoader();
+const clock = new THREE.Clock();
+const speedScale = 2.5;
 const solarSystem = new THREE.Group();
 scene.add(solarSystem);
 
@@ -136,15 +138,17 @@ function resizeCameras() {
 function animate() {
     requestAnimationFrame(animate);
 
+    const dt = clock.getDelta() * 60;
+
     stats.update();
     controls.update();
 
-    sun.rotation.y += 0.004;
+    sun.rotation.y += 0.004 * dt * speedScale;
 
     planets.forEach(({ info, planet, orbit }) => {
-        planet.rotation.y += info.rotationSpeed;
+        planet.rotation.y += info.rotationSpeed * dt * speedScale;
 
-        orbit.rotation.y += info.orbitSpeed;
+        orbit.rotation.y += info.orbitSpeed * dt * speedScale;
     });
 
     renderer.render(scene, activeCamera);
