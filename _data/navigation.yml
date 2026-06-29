@@ -9,11 +9,21 @@
 
 main:
 
-  - title: "CV"
-    url: /files/Academic_CV_BirkenSilitch.pdf
-    
+  - title: "Projects"
+    title_ko: "프로젝트"
+    url: /projects/
+
   - title: "Blog"
+    title_ko: "글"
     url: /blog/
+
+  - title: "CV"
+    title_ko: "CV"
+    url: /files/Academic_CV_BirkenSilitch.pdf
+
+  - title: "Contact"
+    title_ko: "연락"
+    url: /#contact
 
   # - title: "Talks"
   #  url: /talks/    

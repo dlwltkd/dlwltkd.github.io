@@ -1,31 +1,95 @@
 ---
-layout: compress
 ---
 
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ site.locale | slice: 0,2 }}">
   <head>
     {% include head.html %}
     {% include head/custom.html %}
   </head>
 
-  <body>
+  <body data-lang="ko">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-brand" href="{{ base_path }}/" aria-label="{{ site.title }} home">
+          <span class="site-brand__mark">BS</span>
+          <span class="site-brand__text">Birken Silitch</span>
+        </a>
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+        <nav class="site-nav" aria-label="Main navigation">
+          {% for link in site.data.navigation.main %}
+            {% if link.url contains 'http' %}
+              {% assign domain = '' %}
+            {% else %}
+              {% assign domain = base_path %}
+            {% endif %}
+            <a href="{{ domain }}{{ link.url }}"><span data-lang="ko">{{ link.title_ko | default: link.title }}</span><span data-lang="en">{{ link.title }}</span></a>
+          {% endfor %}
+          <div class="language-toggle" aria-label="Language">
+            <button type="button" data-lang-button="ko" aria-pressed="true">KR</button>
+            <button type="button" data-lang-button="en" aria-pressed="false">EN</button>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-    {{ content }}
+    <main class="site-main">
+      {{ content }}
+    </main>
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p data-lang="ko">Jekyll로 만든 개인 포트폴리오입니다. 프로젝트, 글, 개발 기록을 정리합니다.</p>
+        <p data-lang="en">Built with Jekyll. Designed as a growing portfolio for code, projects, and writing.</p>
+        <div class="site-footer__links">
+          <a class="social-link" href="mailto:{{ site.author.email }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm2.4 2 6.6 5.1L18.6 7H5.4Zm13.6 10V9.3l-7 5.4-7-5.4V17h14Z"/></svg>
+            <span data-lang="ko">이메일</span><span data-lang="en">Email</span>
+          </a>
+          <a class="social-link" href="https://github.com/{{ site.author.github }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.5 21.8c.6.1.8-.2.8-.6v-2c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C16.6 4.3 17.6 4.6 17.6 4.6c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.2.9 2.4V22c0 .4.2.7.8.6A11.2 11.2 0 0 0 12 .8Z"/></svg>
+            GitHub
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/{{ site.author.linkedin }}/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.2 9h3.6v11.5H3.2V9Zm6 0h3.4v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6v6.2H17v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.2V9Z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        var saved = localStorage.getItem("siteLanguage") || "ko";
+        var buttons = document.querySelectorAll("[data-lang-button]");
 
-    {% include scripts.html %}
+        function setLanguage(lang) {
+          document.body.setAttribute("data-lang", lang);
+          localStorage.setItem("siteLanguage", lang);
+          buttons.forEach(function (button) {
+            button.setAttribute("aria-pressed", button.dataset.langButton === lang ? "true" : "false");
+          });
+        }
 
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            setLanguage(button.dataset.langButton);
+          });
+        });
+
+        setLanguage(saved);
+      })();
+    </script>
+    {% if page.mathjax %}
+      <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          }
+        };
+      </script>
+      <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    {% endif %}
   </body>
 </html>
